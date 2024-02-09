@@ -1,4 +1,4 @@
-package com.example.calender.data
+package com.example.calender.domain
 
 data class Main(
     val feels_like: Double,
