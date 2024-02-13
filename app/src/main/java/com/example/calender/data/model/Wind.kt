@@ -1,6 +1,6 @@
-package com.example.calender.domain
+package com.example.calender.data.model
 
 data class Wind(
-    val deg: Int,
-    val speed: Double
+    val deg: Int = 0,
+    val speed: Double = 0.0
 )

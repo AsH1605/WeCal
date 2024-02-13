@@ -1,11 +1,4 @@
-package com.example.calender.domain
-
-import com.example.calender.domain.Clouds
-import com.example.calender.domain.Coord
-import com.example.calender.domain.Main
-import com.example.calender.domain.Sys
-import com.example.calender.domain.Weather
-import com.example.calender.domain.Wind
+package com.example.calender.data.model
 
 data class WeatherApp(
     val base: String,

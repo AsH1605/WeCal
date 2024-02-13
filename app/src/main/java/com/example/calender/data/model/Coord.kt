@@ -1,4 +1,4 @@
-package com.example.calender.domain
+package com.example.calender.data.model
 
 data class Coord(
     val lat: Double,
