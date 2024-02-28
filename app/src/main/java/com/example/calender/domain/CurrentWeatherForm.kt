@@ -6,6 +6,7 @@ data class CurrentWeatherForm(
     val updatedDate: Int,
     val description:String,
     val temperature:String,
+    val dt:String,
     val minTemperature:String,
     val maxTemperature:String,
     val sunrise:String,
@@ -13,5 +14,6 @@ data class CurrentWeatherForm(
     val windSpeed:String,
     val pressure:String,
     val feelsLike:String,
-    val humidity:String
+    val humidity:String,
+    val icon: Int
 )

@@ -6,14 +6,6 @@ import java.util.Calendar
 import java.util.Locale
 
 object WeatherUtils {
-    @SuppressLint("SimpleDateFormat")
-    fun convertTimetoDate(timestamp: Int):String{
-        val calendar = Calendar.getInstance(Locale.ENGLISH)
-        calendar.timeInMillis = timestamp * 1000L
-        val datef = SimpleDateFormat("dd-MM-yyyy")
-        val date = datef.format(calendar.time)
-        return "$date"
-    }
 
     fun getHourAndMinute(timestamp: Int): String {
         val calendar = Calendar.getInstance(Locale.ENGLISH)
@@ -25,7 +17,8 @@ object WeatherUtils {
 
 
     fun getTemp(temp: Double): String {
-        return "$temp °C"
+        val formattedTemp = String.format("%.2f", temp - 273)
+        return "$formattedTemp °C"
     }
 
 

@@ -11,23 +11,15 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.calender.domain.CurrentWeatherUseCase
 import com.example.calender.domain.WeatherRepository import com.example.calender.presentation.ui.component.Weather
+import com.example.calender.presentation.ui.component.WeatherScreen
 import com.example.calender.presentation.viewmodel.WeatherViewModel
 import com.example.calender.ui.theme.CalenderTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,8 +45,8 @@ class MainActivity : ComponentActivity() {
             CalenderTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-//                    BoxSet()
-//                    WeatherScreen()
+                    BoxSet()
+                    WeatherScreen(viewModel)
                 }
             }
         }
@@ -62,47 +54,22 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-//@OptIn(FlowPreview::class)
-//@Composable
-//fun WeatherScreen(weatherViewModel: WeatherViewModel = viewModel()) {
-//    val weatherResponse by weatherViewModel.weatherResponse.collectAsState(initial = null)
-//    Column(
-//        modifier = Modifier
-//            .fillMaxSize()
-//            .padding(16.dp),
-//        horizontalAlignment = Alignment.CenterHorizontally
-//    ) {
-//        if (weatherResponse != null) {
-//            val response = weatherResponse!!
-////            ImageLoader(response.weather[0].description)
-////            Text(text = response.weather[0].description)
-//            Text(text = response.name)
-//            Text(text = response.wind.deg.toString())
-//            Text(text = response.wind.speed.toString())
-//            Text(text = ((((response.main.temp?.minus(273))?.times(100.0))?.toInt() )?.div(100.0)).toString())
-//            Text(text = response.main.humidity.toString())
-//        } else {
-//            Text(text = "Loading...")
-//        }
-//    }
-//}
 
-
-//@Composable
-//fun BoxSet(){
-//    Column {
-//        Box(
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .fillMaxHeight(),
-//            contentAlignment = Alignment.Center
-//        ) {
-//            Image(
-//                painter = painterResource(id = R.drawable.bg),
-//                modifier = Modifier.fillMaxSize(),
-//                contentDescription = "Background Image",
-//                contentScale = ContentScale.Crop
-//            )
-//        }
-//    }
-//}}
+@Composable
+fun BoxSet(){
+    Column {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .fillMaxHeight(),
+            contentAlignment = Alignment.Center
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.bg),
+                modifier = Modifier.fillMaxSize(),
+                contentDescription = "Background Image",
+                contentScale = ContentScale.Crop
+            )
+        }
+    }
+}

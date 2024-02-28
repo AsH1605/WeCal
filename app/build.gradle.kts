@@ -83,13 +83,15 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.44")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
     implementation ("androidx.lifecycle:lifecycle-extensions:2.0.0")
+    implementation("androidx.compose.runtime:runtime-livedata:1.6.1")
+
 
     val room_version = "2.6.1"
     implementation ("androidx.room:room-runtime:$room_version")
     kapt ("androidx.room:room-compiler:$room_version")
     implementation ("androidx.room:room-ktx:$room_version")
     implementation ("androidx.room:room-rxjava2:$room_version")
-    implementation("com.squareup.moshi:moshi-kotlin:1.15.0")}
+}
 
 kapt {
     correctErrorTypes = true
