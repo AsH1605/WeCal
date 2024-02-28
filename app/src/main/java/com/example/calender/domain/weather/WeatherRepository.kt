@@ -1,14 +1,12 @@
-package com.example.calender.domain
+package com.example.calender.domain.weather
 
 
 import com.example.calender.data.WeatherRepositoryImpl
 import com.example.calender.data.model.response.CurrentWeather
-import io.reactivex.Single
-import retrofit2.Response
 import javax.inject.Inject
 
 class WeatherRepository @Inject constructor(private val weatherRepositoryImpl: WeatherRepositoryImpl){
-    suspend fun fetchData(city: String): CurrentWeather {
-        return weatherRepositoryImpl.getWeather(city)
+    suspend fun fetchData(lat: Double, lon: Double): CurrentWeather {
+        return weatherRepositoryImpl.getWeather(lat, lon)
     }
 }

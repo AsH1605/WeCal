@@ -7,7 +7,7 @@ import javax.inject.Inject
 class WeatherRepositoryImpl @Inject constructor(
     private val apiInterface: ApiInterface
 ) {
-    suspend fun getWeather(city: String): CurrentWeather {
-        return apiInterface.getWeather(city)
+    suspend fun getWeather(lat: Double, lon: Double): CurrentWeather {
+        return apiInterface.getWeather(lat, lon)
     }
 }

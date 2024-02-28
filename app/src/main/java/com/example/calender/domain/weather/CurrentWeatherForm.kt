@@ -1,4 +1,4 @@
-package com.example.calender.domain
+package com.example.calender.domain.weather
 
 
 data class CurrentWeatherForm(

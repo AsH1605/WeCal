@@ -3,14 +3,14 @@ package com.example.calender.domain.mapper
 import com.example.calender.R
 import com.example.calender.data.WeatherUtils
 import com.example.calender.data.model.response.CurrentWeather
-import com.example.calender.domain.CurrentWeatherForm
+import com.example.calender.domain.weather.CurrentWeatherForm
 import javax.inject.Inject
 
 
 class WeatherMapper @Inject constructor() {
     fun currentWeatherResponseToCurrentWeather(
         currentWeather: CurrentWeather
-    ):CurrentWeatherForm{
+    ): CurrentWeatherForm {
         val icon=currentWeather.weather[0].icon
         val weatherIcon = mapIcon(icon)
         return CurrentWeatherForm(
