@@ -54,7 +54,7 @@ class WeatherMapper @Inject constructor() {
             "01d"->R.drawable.d01
             "01n"->R.drawable.n01
             "02d"->R.drawable.d02
-            "02n"-> R.drawable.n02
+            "02n"->R.drawable.n02
             "03d"->R.drawable.n03
             "03n"->R.drawable.n03
             "04d"->R.drawable.d04
