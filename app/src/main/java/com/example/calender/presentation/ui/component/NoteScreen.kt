@@ -35,12 +35,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.example.calender.data.db.NoteEntity
 import com.example.calender.presentation.viewmodel.NoteViewModel
+import java.time.format.TextStyle
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -64,10 +66,12 @@ fun NotesScreen(
                     onValueChange = {setNote(it)
                     },
                     modifier = Modifier.fillMaxWidth(),
-                    label = { Text(text = "Note")},
+                    label = { Text(text = "Note", color = Color.White)},
                     colors = TextFieldDefaults.outlinedTextFieldColors(
                         focusedBorderColor = MaterialTheme.colorScheme.primary,
-                        focusedLabelColor = MaterialTheme.colorScheme.primary
+                        focusedLabelColor = MaterialTheme.colorScheme.primary,
+                        cursorColor = Color.White,
+                        focusedTextColor = Color.White
                     )
                 )
                 Spacer(modifier = Modifier.height(18.dp))

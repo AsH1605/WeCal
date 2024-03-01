@@ -42,30 +42,29 @@ import com.example.calender.data.db.addDate
 
 @Composable
 fun Notes(
-    noteEntity: NoteEntity, onClick: () -> Unit, onDelete: () -> Unit
-){
+    noteEntity: NoteEntity,
+    onClick: () -> Unit,
+    onDelete: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
+            .clip(RoundedCornerShape(15.dp))
             .background(Color.White),
         contentAlignment = Alignment.BottomEnd
     ) {
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .clip(RoundedCornerShape(10.dp))
-//                .background(color)
-                .clickable {
-                    onClick()
-                }
-                .padding(
-                    horizontal = 8.dp,
-                    vertical = 16.dp
-                ),
+                .fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-
-            Column {
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(RoundedCornerShape(topStart = 15.dp, bottomStart = 15.dp))
+                    .clickable { onClick() }
+                    .padding(horizontal = 8.dp, vertical = 16.dp)
+            ) {
                 Text(
                     text = noteEntity.note,
                     fontWeight = FontWeight.Bold,
@@ -76,23 +75,23 @@ fun Notes(
 
             Box(
                 modifier = Modifier
-                    .size(25.dp)
+                    .size(35.dp) // Increase the size of the Box to accommodate the icon properly
                     .clip(CircleShape)
                     .background(Color.White)
-                    .padding(4.dp),
+                    .padding(6.dp) // Increase the padding to provide enough space around the icon
+                    .clickable { onDelete() },
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
                     imageVector = Icons.Default.Delete,
-                    tint = MaterialTheme.colorScheme.primary,
-                    contentDescription = null,
-                    modifier = Modifier.clickable {
-                        onDelete()
-                    }
+                    tint = MaterialTheme.colorScheme.primary, // Use MaterialTheme.colors.primary instead of MaterialTheme.colorScheme.primary
+                    contentDescription = null
                 )
             }
         }
-        Text(text = noteEntity.addDate,
+
+        Text(
+            text = noteEntity.addDate,
             modifier = Modifier.padding(4.dp),
             color = MaterialTheme.colorScheme.primary,
             fontSize = 10.sp
