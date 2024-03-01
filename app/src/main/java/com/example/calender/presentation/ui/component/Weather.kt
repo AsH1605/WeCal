@@ -37,7 +37,7 @@ fun Weather(
 ) {
     Box(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
     ) {
         Card(
             modifier = Modifier
