@@ -15,6 +15,9 @@ data class NoteEntity(
     @ColumnInfo("note")
     val note:String,
 
+    @ColumnInfo("done")
+    val done: Boolean = false,
+
     @ColumnInfo("added")
     val added: Long = System.currentTimeMillis()
 )

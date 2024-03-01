@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -84,7 +85,7 @@ fun NotesScreen(
                         containerColor = Color.White
                     )
                 ) {
-                    Text(text = "Submit", color = MaterialTheme.colorScheme.primary)
+                    Text(text = "Save", color = MaterialTheme.colorScheme.primary)
                 }
             }
         }
@@ -115,7 +116,7 @@ fun NotesScreen(
                 enter = scaleIn() + fadeIn(),
                 exit = scaleOut() + fadeOut()
             ) {
-                Text(text = "No todos yet!", color = Color.White, fontSize = 22.sp)
+                Text(text = "No Notes yet!", color = Color.White, fontSize = 22.sp)
             }
             AnimatedVisibility(
                 visible = notes.isNotEmpty(),
@@ -133,15 +134,16 @@ fun NotesScreen(
                         ),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    items(notes.size) { noteEntity ->
+                    items(notes.sortedByDescending { it.added }) { note ->
                         Notes(
-                            noteEntity = noteEntity,
+                            noteEntity = note,
                             onClick = {
-                                viewModel.updateNOte(noteEntity.copy(done = !noteEntity.done))
+                                      viewModel.updateNOte(note.copy(done = !note.done))
+                            },
+                            onDelete = {
+                                viewModel.deleteNote(note)
                             }
-                        ) {
-                            viewModel.deleteNote(noteEntity)
-                        }
+                        )
                     }
                 }
             }
