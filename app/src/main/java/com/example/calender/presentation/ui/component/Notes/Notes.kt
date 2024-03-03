@@ -1,4 +1,4 @@
-package com.example.calender.presentation.ui.component
+package com.example.calender.presentation.ui.component.Notes
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn

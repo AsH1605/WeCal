@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "992457997678",
+    "project_id": "wecal-682ba",
+    "storage_bucket": "wecal-682ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992457997678:android:e58cf81505e8905e1d957f",
+        "android_client_info": {
+          "package_name": "com.example.calender"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzbA2Nr7svjjCZrDcpOVu8uhwLEAqetYU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

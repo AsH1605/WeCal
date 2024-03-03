@@ -21,12 +21,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.calender.domain.weather.WeatherRepository
-import com.example.calender.presentation.ui.component.NotesScreen
-import com.example.calender.presentation.ui.component.WeatherScreen
+import com.example.calender.presentation.ui.component.Notes.NotesScreen
+import com.example.calender.presentation.ui.component.Weather.WeatherScreen
+import com.example.calender.presentation.ui.component.firebaseNotes.FirebaseNotesScreen
 import com.example.calender.presentation.viewmodel.WeatherViewModel
 import com.example.calender.ui.theme.CalenderTheme
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -45,7 +45,9 @@ class MainActivity : ComponentActivity() {
                     Column {
                         WeatherScreen(viewModel)
                         Spacer(modifier = Modifier.height(8.dp))
-                        NotesScreen()
+//                        NotesScreen()
+//                        Spacer(modifier = Modifier.height(8.dp))
+                        FirebaseNotesScreen(firebaseNotes = emptyList())
                     }
                 }
             }

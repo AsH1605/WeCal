@@ -1,4 +1,4 @@
-package com.example.calender.presentation.ui.component
+package com.example.calender.presentation.ui.component.Weather
 
 import android.graphics.drawable.BitmapDrawable
 import androidx.compose.foundation.Image

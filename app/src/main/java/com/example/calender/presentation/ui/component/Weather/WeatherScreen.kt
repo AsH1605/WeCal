@@ -1,4 +1,4 @@
-package com.example.calender.presentation.ui.component
+package com.example.calender.presentation.ui.component.Weather
 
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.livedata.observeAsState

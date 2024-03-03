@@ -1,4 +1,4 @@
-package com.example.calender.data
+package com.example.calender.data.RepositoryImpl
 
 import com.example.calender.data.db.NoteDatabase
 import com.example.calender.data.db.NoteEntity
@@ -21,6 +21,4 @@ class NotesRepositoryImpl(private val database: NoteDatabase):NotesRepository {
     override suspend fun deleteNote(note: NoteEntity) {
         dao.deleteNote(note)
     }
-
-
 }

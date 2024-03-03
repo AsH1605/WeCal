@@ -1,7 +1,7 @@
 package com.example.calender.domain.weather
 
 
-import com.example.calender.data.WeatherRepositoryImpl
+import com.example.calender.data.RepositoryImpl.WeatherRepositoryImpl
 import com.example.calender.data.model.response.CurrentWeather
 import javax.inject.Inject
 

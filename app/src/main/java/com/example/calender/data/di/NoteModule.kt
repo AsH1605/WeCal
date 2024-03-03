@@ -2,8 +2,7 @@ package com.example.calender.data.di
 
 import android.app.Application
 import androidx.room.Room
-import androidx.room.RoomDatabase
-import com.example.calender.data.NotesRepositoryImpl
+import com.example.calender.data.RepositoryImpl.NotesRepositoryImpl
 import com.example.calender.data.db.NoteDatabase
 import com.example.calender.domain.Notes.NotesRepository
 import dagger.Module
