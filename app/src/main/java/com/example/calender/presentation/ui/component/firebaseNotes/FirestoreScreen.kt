@@ -37,17 +37,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
-import com.example.calender.data.model.response.NoteFirebase
+import com.example.calender.data.model.NoteFirebase
 import com.example.calender.presentation.viewmodel.NotesFirebaseViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FirebaseNotesScreen(
-viewModel: NotesFirebaseViewModel = androidx.lifecycle.viewmodel.compose.viewModel(),
-firebaseNotes: List<NoteFirebase>
-){
-
-
+fun FirestoreScreen(
+    firebaseNotes: List<NoteFirebase>,
+    viewModel: NotesFirebaseViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+    ){
     val (dialogOpen, setDialogOpen) = remember {
         mutableStateOf(false)
     }
@@ -57,7 +55,7 @@ firebaseNotes: List<NoteFirebase>
             mutableStateOf("")
         }
         Dialog(onDismissRequest = { setDialogOpen(false) }) {
-            Column {
+            Column{
                 OutlinedTextField(
                     value = note,
                     onValueChange = {setNote(it)
@@ -134,7 +132,7 @@ firebaseNotes: List<NoteFirebase>
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     items(firebaseNotes) { note->
-                        FirebaseNotes(
+                        Note(
                             note = note,
                             onClick = { /*TODO*/ },
                             onDelete = { note.id?.let { viewModel.deleteNotek(it) } }

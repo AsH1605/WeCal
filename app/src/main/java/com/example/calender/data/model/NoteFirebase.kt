@@ -1,4 +1,4 @@
-package com.example.calender.data.model.response
+package com.example.calender.data.model
 
 import java.text.SimpleDateFormat
 import java.util.Calendar

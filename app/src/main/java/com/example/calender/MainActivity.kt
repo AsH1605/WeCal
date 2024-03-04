@@ -12,18 +12,32 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.calender.data.model.NoteFirebase
+import com.example.calender.data.model.response.ResponseFromFirestore
 import com.example.calender.domain.weather.WeatherRepository
 import com.example.calender.presentation.ui.component.Notes.NotesScreen
 import com.example.calender.presentation.ui.component.Weather.WeatherScreen
-import com.example.calender.presentation.ui.component.firebaseNotes.FirebaseNotesScreen
+import com.example.calender.presentation.ui.component.firebaseNotes.FirestoreScreen
+import com.example.calender.presentation.viewmodel.NotesFirebaseViewModel
 import com.example.calender.presentation.viewmodel.WeatherViewModel
 import com.example.calender.ui.theme.CalenderTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,9 +48,21 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var weatherRepository: WeatherRepository
     private val viewModel: WeatherViewModel by viewModels()
+    private val firestoreViewModel: NotesFirebaseViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val noteResponse = firestoreViewModel.NoteResponse
+        val navController = rememberNavController()
+
+
+        val firebaseNotes: List<NoteFirebase> = when (val response = noteResponse) {
+            is ResponseFromFirestore.Success -> {
+                (response as ResponseFromFirestore.Success).data
+            }
+            else -> emptyList()
+        }
         setContent {
             CalenderTheme {
                 // A surface container using the 'background' color from the theme
@@ -45,9 +71,9 @@ class MainActivity : ComponentActivity() {
                     Column {
                         WeatherScreen(viewModel)
                         Spacer(modifier = Modifier.height(8.dp))
+                        com.example.calender.CustomBottomAppBar(navController = navController)
 //                        NotesScreen()
-//                        Spacer(modifier = Modifier.height(8.dp))
-                        FirebaseNotesScreen(firebaseNotes = emptyList())
+//                        FirestoreScreen(firebaseNotes = firebaseNotes)
                     }
                 }
             }
@@ -71,6 +97,41 @@ fun BoxSet(){
                 modifier = Modifier.fillMaxSize(),
                 contentDescription = "Background Image",
                 contentScale = ContentScale.Crop
+            )
+        }
+    }
+}
+
+@Composable
+fun CustomBottomAppBar(navController: NavHostController) {
+    val currentRoute = navController.currentBackStackEntry?.destination?.route
+    val list = listOf(
+        BottomBarScreen.Personal,
+        BottomBarScreen.Groups
+    )
+    var selectedIndex by remember { mutableStateOf(list.indexOfFirst { it.route == currentRoute }) }
+    NavigationBar{
+        list.forEachIndexed { index, screens->
+            NavigationBarItem(
+                selected = selectedIndex == index,
+                onClick = {
+                    navController.navigate(screens.route)
+                    selectedIndex = index
+                },
+                icon = {
+                    Icon(
+                        imageVector = screens.icon,
+                        contentDescription = screens.title,
+                        tint = if (selectedIndex == index) MaterialTheme.colorScheme.primary else Color.Gray
+                    )
+                },
+                label = {
+                    Text(
+                        text = screens.title,
+                        color = if (selectedIndex == index) MaterialTheme.colorScheme.primary else Color.Gray
+                    )
+                },
+                alwaysShowLabel = true
             )
         }
     }

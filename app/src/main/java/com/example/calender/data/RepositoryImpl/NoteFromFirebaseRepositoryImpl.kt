@@ -1,6 +1,6 @@
 package com.example.calender.data.RepositoryImpl
 
-import com.example.calender.data.model.response.NoteFirebase
+import com.example.calender.data.model.NoteFirebase
 import com.example.calender.data.model.response.ResponseFromFirestore
 import com.example.calender.domain.NotesFirebase.DeleteNoteResponse
 import com.example.calender.domain.NotesFirebase.NotesFirebaseRepository
@@ -18,7 +18,7 @@ class NoteFromFirebaseRepositoryImpl @Inject constructor(
 ): NotesFirebaseRepository{
 
     override fun getNotesFromFirestore() = callbackFlow {
-        val snapshotListener = noteRef.orderBy("note").addSnapshotListener { snapshot, e ->
+        val snapshotListener = noteRef.orderBy("id").addSnapshotListener { snapshot, e ->
             val notesResponse = if (snapshot!=null){
                 val note = snapshot.toObjects(NoteFirebase::class.java)
                 ResponseFromFirestore.Success(note)

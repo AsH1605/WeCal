@@ -1,6 +1,6 @@
 package com.example.calender.domain.NotesFirebase
 
-import com.example.calender.data.model.response.NoteFirebase
+import com.example.calender.data.model.NoteFirebase
 import com.example.calender.data.model.response.ResponseFromFirestore
 import kotlinx.coroutines.flow.Flow
 

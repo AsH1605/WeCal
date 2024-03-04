@@ -1,11 +1,11 @@
 package com.example.calender.data.model.response
 
-import com.example.calender.data.model.Clouds
-import com.example.calender.data.model.Coord
-import com.example.calender.data.model.Main
-import com.example.calender.data.model.Sys
-import com.example.calender.data.model.Weather
-import com.example.calender.data.model.Wind
+import com.example.calender.data.model.ApiResponse.Clouds
+import com.example.calender.data.model.ApiResponse.Coord
+import com.example.calender.data.model.ApiResponse.Main
+import com.example.calender.data.model.ApiResponse.Sys
+import com.example.calender.data.model.ApiResponse.Weather
+import com.example.calender.data.model.ApiResponse.Wind
 import com.google.gson.annotations.SerializedName
 
 

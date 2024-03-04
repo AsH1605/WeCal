@@ -1,4 +1,4 @@
-package com.example.calender.data.model
+package com.example.calender.data.model.ApiResponse
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

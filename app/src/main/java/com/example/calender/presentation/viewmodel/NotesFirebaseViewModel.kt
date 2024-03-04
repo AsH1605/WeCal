@@ -5,7 +5,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.calender.data.model.response.NoteFirebase
 import com.example.calender.data.model.response.ResponseFromFirestore
 import com.example.calender.domain.NotesFirebase.DeleteNoteResponse
 import com.example.calender.domain.NotesFirebase.NotesResponse
