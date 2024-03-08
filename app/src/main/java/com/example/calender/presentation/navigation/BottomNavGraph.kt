@@ -11,8 +11,8 @@ import com.example.calender.presentation.ui.component.firebaseNotes.FirestoreScr
 fun BottomNavGraph(navController: NavHostController){
     NavHost(
         navController = navController,
-        startDestination = BottomBar.Personal.route){
-        composable(route = BottomBarGraph.Personal.route){
+        startDestination = BottomBarScreen.Personal.route){
+        composable(route = BottomBarScreen.Personal.route){
             NotesScreen()
         }
         composable(route = BottomBarScreen.Groups.route){

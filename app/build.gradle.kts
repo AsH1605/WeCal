@@ -97,6 +97,9 @@ dependencies {
     kapt ("androidx.room:room-compiler:$room_version")
     implementation ("androidx.room:room-ktx:$room_version")
     implementation ("androidx.room:room-rxjava2:$room_version")
+
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+
 }
 
 kapt {
