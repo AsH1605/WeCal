@@ -18,9 +18,12 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,6 +37,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.calender.data.model.NoteFirebase
 import com.example.calender.data.model.response.ResponseFromFirestore
 import com.example.calender.domain.weather.WeatherRepository
+import com.example.calender.presentation.navigation.BottomBarScreen
+import com.example.calender.presentation.navigation.BottomNavGraph
 import com.example.calender.presentation.ui.component.Notes.NotesScreen
 import com.example.calender.presentation.ui.component.Weather.WeatherScreen
 import com.example.calender.presentation.ui.component.firebaseNotes.FirestoreScreen
@@ -52,10 +57,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         val noteResponse = firestoreViewModel.NoteResponse
-        val navController = rememberNavController()
-
 
         val firebaseNotes: List<NoteFirebase> = when (val response = noteResponse) {
             is ResponseFromFirestore.Success -> {
@@ -63,17 +65,20 @@ class MainActivity : ComponentActivity() {
             }
             else -> emptyList()
         }
+
         setContent {
             CalenderTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    val navController = rememberNavController()
                     BoxSet()
                     Column {
                         WeatherScreen(viewModel)
                         Spacer(modifier = Modifier.height(8.dp))
-                        com.example.calender.CustomBottomAppBar(navController = navController)
-//                        NotesScreen()
-//                        FirestoreScreen(firebaseNotes = firebaseNotes)
+                        CustomBottomAppBar(navController = navController)
+                        BottomNavGraph(navController = navController)
                     }
                 }
             }
