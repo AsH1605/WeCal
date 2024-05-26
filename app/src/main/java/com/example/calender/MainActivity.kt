@@ -53,18 +53,9 @@ class MainActivity : ComponentActivity() {
     @Inject
     lateinit var weatherRepository: WeatherRepository
     private val viewModel: WeatherViewModel by viewModels()
-    private val firestoreViewModel: NotesFirebaseViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val noteResponse = firestoreViewModel.NoteResponse
-
-        val firebaseNotes: List<NoteFirebase> = when (val response = noteResponse) {
-            is ResponseFromFirestore.Success -> {
-                (response as ResponseFromFirestore.Success).data
-            }
-            else -> emptyList()
-        }
 
         setContent {
             CalenderTheme {
