@@ -68,7 +68,9 @@ class MainActivity : ComponentActivity() {
                     Column {
                         WeatherScreen(viewModel)
                         Spacer(modifier = Modifier.height(8.dp))
-                        CustomBottomAppBar(navController = navController)
+                        CustomBottomAppBar(
+                            navController = navController
+                        )
                         BottomNavGraph(navController = navController)
                     }
                 }

@@ -88,7 +88,7 @@ fun FirestoreScreen(
         }
     }
     Scaffold(
-        containerColor = MaterialTheme.colorScheme.primary,
+        containerColor = Color.Transparent,
         floatingActionButton = {
             FloatingActionButton(
                 onClick = { setDialogOpen(true) },
