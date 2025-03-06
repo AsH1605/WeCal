@@ -41,3 +41,8 @@ WeCal is a feature-packed Android application designed to streamline your daily 
 | **Location Services**   | Fetch location data for weather updates.           |  
 
 ---
+
+## Screenshots
+
+<img src="https://github.com/user-attachments/assets/d383e3c7-52f4-4aef-8c55-e8bf74a00952" width="300px"/>
+
